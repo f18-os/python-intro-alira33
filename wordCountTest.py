@@ -25,7 +25,7 @@ if not os.path.exists(textFname):
     exit()
     
 # execute the program with
-subprocess.call(["python3", "./wordCount.py", textFname, outputFname])
+subprocess.call(["python", "./wordCount.py", textFname, outputFname])
 
 # make sure output file exists
 if not os.path.exists(outputFname):
@@ -51,7 +51,7 @@ with open(inputFname, 'r') as inputFile:
         # split line on whitespace and punctuation
         word = re.split('[ \t]', line)
         if len(word) != 2:
-            print ("Badly formatted line, exiting. Bad line:\n %s" % line)
+            print("Badly formatted line, exiting. Bad line:\n %s" % line)
             exit()
         master[word[0]] = int(word[1])
         words += 1
@@ -76,7 +76,7 @@ with open(outputFname, 'r') as outputFile:
 # see if test is missing words from master
 for key in master:
     if key not in test:
-        print ("Missing word in test file: %s" % key)
+        print("Missing word in test file: %s" % key)
         passed = False
         faults += 1
 
@@ -90,12 +90,12 @@ for key in test:
 # see if counts match        
 for key in master:
     if key in test and test[key] != master[key]:
-        print ("Count mismatch for %s, should be %s value is %s" % (key, master[key], test[key]))
+        print("Count mismatch for %s, should be %s value is %s" % (key, master[key], test[key]))
         passed = False
         faults += 1
 if passed:
-    print ("Passed!")
+    print("Passed!")
 else:
-    print ("Error rate {0:.3f}%".format(faults * 100.0 / words))
-    print ("Failed!")
+    print("Error rate {0:.3f}%".format(faults * 100.0 / words))
+    print("Failed!")
         
