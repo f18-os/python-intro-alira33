@@ -32,12 +32,18 @@ import re  # regular expression tools
 #     exit()
 
 # Cleaning key without numbers
-clean_Key_String = ''
-document_Key = open('output.txt')
-document_Key_String = document_Key.read()
-for word in document_Key_String:
-    clean_Key_String += re.sub('[0-9]', '', word)
-print(clean_Key_String)
+clean_key_string = ''
+document_key = open('output.txt')
+document_key_string = document_key.read()
+i = 0
+for word in document_key_string:
+    clean_key_string += re.sub('[0-9]', '', word)
+
+# Storing words in array
+split_key = clean_key_string.split()
+print(split_key)
+
+
 
 # frequency = {}
 # document_text = open('input.txt', 'r')
