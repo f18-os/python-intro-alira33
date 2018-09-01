@@ -14,33 +14,33 @@ textFname = sys.argv[1]
 outputFname = sys.argv[2]
 inputFname = sys.argv[3]
 
-#first check to make sure program exists
+# first check to make sure program exists
 if not os.path.exists("wordCount.py"):
     print ("wordCount.py doesn't exist! Exiting")
     exit()
 
-#make sure text files exist
+# make sure text files exist
 if not os.path.exists(textFname):
     print ("text file input %s doesn't exist! Exiting" % textFname)
     exit()
     
-#execute the program with 
+# execute the program with
 subprocess.call(["python3", "./wordCount.py", textFname, outputFname])
 
-#make sure output file exists
+# make sure output file exists
 if not os.path.exists(outputFname):
     print ("wordCount output file %s doesn't exist! Exiting" % outputFname)
     exit()
 
     
-#stats
+# stats
 passed = True
 faults = 0
 words  = 0
 
-#master dictionary
+# master dictionary
 master = {}
-#dictionary to test
+# dictionary to test
 test = {}
 
 # attempt to open input file
