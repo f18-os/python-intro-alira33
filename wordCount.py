@@ -31,6 +31,13 @@ import re  # regular expression tools
 #     print("wordCount output file %s doesn't exist! Exiting" % outputFname)
 #     exit()
 
+def count_chars(txt):
+        result = 0
+        for char in txt:
+            result += 1
+        return result
+
+
 # Cleaning key without numbers
 clean_key_string = ''
 document_key = open('output.txt')
@@ -41,9 +48,12 @@ for word in document_key_string:
 
 # Storing words in array
 split_key = clean_key_string.split()
-print(split_key)
 
-
+list_num_of_char = {}
+index = 0
+for key in split_key:
+    num_of_char = count_chars(key)
+    print(key, num_of_char)
 
 # frequency = {}
 # document_text = open('input.txt', 'r')
