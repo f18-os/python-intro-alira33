@@ -2,41 +2,14 @@
 
 import sys  # command line arguments
 import re  # regular expression tools
-import os  # checking if file exists
-import subprocess  # executing program
 
-# # set input and output files
-# if len(sys.argv) is not 3:
-#     print("Correct usage: wordCount.py <input text file> <output file>")
-#     exit()
-#
-# textFname = sys.argv[1]
-# outputFname = sys.argv[2]
-#
-# # first check to make sure program exists
-# if not os.path.exists("wordCount.py"):
-#     print("wordCount.py doesn't exist! Exiting")
-#     exit()
-#
-# # make sure text files exist
-# if not os.path.exists(textFname):
-#     print("text file input %s doesn't exist! Exiting" % textFname)
-#     exit()
-#
-# # execute the program with
-# subprocess.call(["python", "./wordCount.py", textFname, outputFname])
-#
-# # make sure output file exists
-# if not os.path.exists(outputFname):
-#     print("wordCount output file %s doesn't exist! Exiting" % outputFname)
-#     exit()
+# set input and output files
+if len(sys.argv) is not 3:
+    print("Correct usage: wordCount.py <input text file> <output file>")
+    exit()
 
-
-def count_chars(txt):
-        result = 0
-        for char in txt:
-            result += 1
-        return result
+input = sys.argv[1]
+output = sys.argv[2]
 
 
 def regex(key, text_string):
@@ -60,8 +33,7 @@ for word in document_key_string:
 split_key = clean_key_string.split()
 
 frequency = {}
-# input only changes
-document_text = open('speech.txt', 'r')
+document_text = open(input, 'r')
 text_string = document_text.read().lower()
 match_pattern_list = []
 
@@ -72,11 +44,13 @@ for i in split_key:
 
 idx = 0
 for words in match_pattern_list[1]:
-    file = open('output.txt', 'a')
+    # output.txt
+    file = open(output, 'a')
     file.write(words + " " + str(frequency[words]) + "\n")
     idx += 1
     if idx == len(match_pattern_list[1]):
-        print("Passed!")
+        print("Number of words found in output.txt")
+        file.close()
         exit()
 
 
