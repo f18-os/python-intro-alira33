@@ -1,18 +1,18 @@
+#! /usr/bin/env python3
+
 import sys  # command line arguments
 import re  # regular expression tools
 import os  # checking if file exists
 import subprocess  # executing program
 
 # # set input and output files
-# if len(sys.argv) is not 2:
+# if len(sys.argv) is not 3:
 #     print("Correct usage: wordCount.py <input text file> <output file>")
 #     exit()
 #
 # textFname = sys.argv[1]
 # outputFname = sys.argv[2]
 #
-# print(textFname)
-# print(outputFname)
 # # first check to make sure program exists
 # if not os.path.exists("wordCount.py"):
 #     print("wordCount.py doesn't exist! Exiting")
@@ -31,11 +31,13 @@ import subprocess  # executing program
 #     print("wordCount output file %s doesn't exist! Exiting" % outputFname)
 #     exit()
 
+
 def count_chars(txt):
         result = 0
         for char in txt:
             result += 1
         return result
+
 
 def regex(key, text_string):
     result = re.findall(r'\b'+key+'\\b', text_string)
@@ -47,6 +49,7 @@ def regex(key, text_string):
 
 # Cleaning key without numbers
 clean_key_string = ''
+# output
 document_key = open('speechKey.txt')
 document_key_string = document_key.read()
 i = 0
@@ -57,7 +60,8 @@ for word in document_key_string:
 split_key = clean_key_string.split()
 
 frequency = {}
-document_text = open("speech.txt", 'r')
+# input only changes
+document_text = open('speech.txt', 'r')
 text_string = document_text.read().lower()
 match_pattern_list = []
 
@@ -66,12 +70,14 @@ for i in split_key:
         match_pattern_list.append(regex(split_key[index], text_string))
         index += 1
 
+idx = 0
 for words in match_pattern_list[1]:
-    file = open("output.txt", "a")
+    file = open('output.txt', 'a')
     file.write(words + " " + str(frequency[words]) + "\n")
-    print(words, frequency[words])
-
-exit()
+    idx += 1
+    if idx == len(match_pattern_list[1]):
+        print("Passed!")
+        exit()
 
 
 
