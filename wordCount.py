@@ -37,7 +37,7 @@ def count_chars(txt):
             result += 1
         return result
 
-def regex(key, num_char, text_string):
+def regex(key, text_string):
     result = re.findall(r'\b'+key+'\\b', text_string)
     for word in result:
             count = frequency.get(key, 0)
@@ -57,11 +57,6 @@ for word in document_key_string:
 # Storing words in array
 split_key = clean_key_string.split()
 
-list_num_of_char = []
-for key in split_key:
-    num_of_char = count_chars(key)
-    list_num_of_char.append(num_of_char)
-
 frequency = {}
 document_text = open('input.txt', 'r')
 text_string = document_text.read().lower()
@@ -69,8 +64,9 @@ match_pattern_list = []
 
 index = 0
 for i in split_key:
-        match_pattern_list.append(regex(split_key[index], list_num_of_char[index], text_string))
+        match_pattern_list.append(regex(split_key[index], text_string))
         index += 1
 
 for words in match_pattern_list[1]:
     print(words, frequency[words])
+
