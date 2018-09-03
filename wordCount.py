@@ -1,18 +1,18 @@
-#! /usr/bin/env python3
-
-# import sys  # command line arguments
+import sys  # command line arguments
 import re  # regular expression tools
-# import os  # checking if file exists
-# import subprocess  # executing program
+import os  # checking if file exists
+import subprocess  # executing program
 
 # # set input and output files
-# if len(sys.argv) is not 4:
+# if len(sys.argv) is not 2:
 #     print("Correct usage: wordCount.py <input text file> <output file>")
 #     exit()
 #
 # textFname = sys.argv[1]
 # outputFname = sys.argv[2]
 #
+# print(textFname)
+# print(outputFname)
 # # first check to make sure program exists
 # if not os.path.exists("wordCount.py"):
 #     print("wordCount.py doesn't exist! Exiting")
@@ -42,7 +42,6 @@ def regex(key, text_string):
     for word in result:
             count = frequency.get(key, 0)
             frequency[word] = count + 1
-
     return frequency.keys()
 
 
@@ -58,7 +57,7 @@ for word in document_key_string:
 split_key = clean_key_string.split()
 
 frequency = {}
-document_text = open('input.txt', 'r')
+document_text = open("input.txt", 'r')
 text_string = document_text.read().lower()
 match_pattern_list = []
 
@@ -68,5 +67,9 @@ for i in split_key:
         index += 1
 
 for words in match_pattern_list[1]:
+    file = open("word_match", "a")
+    file.write(words + " " + str(frequency[words]) + "\n")
     print(words, frequency[words])
+
+
 
