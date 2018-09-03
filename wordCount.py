@@ -47,7 +47,7 @@ def regex(key, text_string):
 
 # Cleaning key without numbers
 clean_key_string = ''
-document_key = open('output.txt')
+document_key = open('speechKey.txt')
 document_key_string = document_key.read()
 i = 0
 for word in document_key_string:
@@ -57,7 +57,7 @@ for word in document_key_string:
 split_key = clean_key_string.split()
 
 frequency = {}
-document_text = open("input.txt", 'r')
+document_text = open("speech.txt", 'r')
 text_string = document_text.read().lower()
 match_pattern_list = []
 
@@ -67,9 +67,11 @@ for i in split_key:
         index += 1
 
 for words in match_pattern_list[1]:
-    file = open("word_match", "a")
+    file = open("output.txt", "a")
     file.write(words + " " + str(frequency[words]) + "\n")
     print(words, frequency[words])
+
+exit()
 
 
 
