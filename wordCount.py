@@ -2,6 +2,7 @@
 
 import sys  # command line arguments
 import re  # regular expression tools
+import os
 
 # set input and output files
 if len(sys.argv) is not 3:
@@ -43,8 +44,8 @@ for i in split_key:
         index += 1
 
 idx = 0
+os.remove(output)
 for words in match_pattern_list[1]:
-    # output.txt
     file = open(output, 'a')
     file.write(words + " " + str(frequency[words]) + "\n")
     idx += 1
