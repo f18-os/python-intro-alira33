@@ -36,7 +36,7 @@ if not os.path.exists(outputFname):
 # stats
 passed = True
 faults = 0
-words  = 0
+words = 0
 
 # master dictionary
 master = {}
@@ -83,7 +83,7 @@ for key in master:
 # see if test has words master doesn't have
 for key in test:
     if key not in master:
-        print ("Extra word in test file: %s" % key)
+        print("Extra word in test file: %s" % key)
         passed = False
         faults += 1
         
