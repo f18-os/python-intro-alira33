@@ -1,30 +1,39 @@
 This repository contains the code for the python introduction lab. The
-purpose is to have a fairly simple python assignment that introduces
+purpose of this lab is to have a fairly simple python assignment that introduces
 the basic features and tools of python
 
-In the repository are two plain text files with lots of words. Your
-assignment is to create a python 2 program which:
-* takes as input the name of an input file and output file
-* example
+The following program `wordCount.py` does the following (working with the `speech.txt` and `speechKey.txt`) :
 
-`$ python wordCount.py input.txt output.txt`
-* keeps track of the total the number of times each word occurs in the text file 
-* excluding white space and punctuation
-* is case-insensitive
-* print out to the output file (overwriting if it exists) the list of
+* Takes as input the name of an input file and output file
+
+  To run program run command:
+  
+           $ python wordCount.py speech.txt output.txt
+      e.g. $ python <program_file> <input_file> <output_file>
+* Keeps track of the total number of times each word occurs in the text file 
+* Excludes white space and punctuation
+* Is case-insensitive
+* Prints out to the output file (overwriting if it exists) the list of
   words sorted in descending order with their respective totals
   separated by a space, one word per line
 
-To test your program we provide wordCountTest.py and two key
-files. This test program takes your output file and notes any
-differences with the key file. An example use is:
+Testing this program uses `wordCountTest.py` which takes the output file and notes any
+differences within the key file. To test run command:
 
-`$ python wordCountTest.py declaration.txt myOutput.txt declarationKey.txt`
+            $ python wordCountTest.py speech.txt output.txt speechKey.txt
+        e.g $ python <program_file> <input_file> <output_file> <key_file>
 
-The re regular expression library and python dictionaries should be
-used in your program. 
+If `declaration.txt` and `declarationKey` would like to be used `wordCount.py` needs to be modified on `line 27`
+        
+        document_key = open('speechKey.txt')       # speech.txt example TO
+        document_key = open('declarationhKey.txt') # declaration.txt example
+           
 
-Note that there are two major dialects of Python.  Python 3.0 is
-incompatible with 2.7.   As a result, Python 2.7 remains popular.  All
-of our examples are in 2.7.  We (mildly) encourage students to use 2.7
-for their assignments. 
+The re regular expression library and python dictionaries are
+used in the program. 
+
+Note this program is using Python 3.0 version.
+
+References:
+
+* https://code.tutsplus.com/tutorials/counting-word-frequency-in-a-file-using-python--cms-25965
