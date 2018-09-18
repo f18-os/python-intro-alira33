@@ -1,4 +1,4 @@
-#! /usr/bin/ python2
+#! /usr/bin/env python2
 
 import os, sys, time, re, subprocess
 
@@ -94,7 +94,7 @@ def run_shell():
             stored_exception = sys.exc_info()
 
     if stored_exception:
-        print("CTRL C detected")
+        print("ctrl+c detected")
         sys.exit()
 
 
