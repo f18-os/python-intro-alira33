@@ -1,8 +1,11 @@
+#! /usr/bin/ python2
+
 import os, sys, time, re, subprocess
 
+# getArgument() identifies whether it is a redirect from or a pipe
 
-def getArguments(line):
-    # wc < ayabi.txt
+
+def get_arguments(line):
     if re.findall(r'\b<\b', line):
         args = line.split("<")
         if len(args) == 1:
@@ -30,8 +33,10 @@ def getArguments(line):
             print(temp)
             return ""
 
+# execute_cmd takes in the full command, redirects, and file source, to execute cmd properly
 
-def executeCmd(line, redirect=False, redirectSource=""):
+
+def execute_cmd(line, redirect=False, redirectSource=""):
     pid = os.getpid()
     rc = os.fork()
 
@@ -45,9 +50,9 @@ def executeCmd(line, redirect=False, redirectSource=""):
             sys.stdout = open(redirectSource, "w")
             # fd = sys.stdout.fileno()
 
-        args = getArguments(line)
+        args = get_arguments(line)
         if args == '':
-            runShell()
+            run_shell()
 
         if args != '':
             for dir in re.split(":", os.environ['PATH']):  # try each directory in path
@@ -65,15 +70,32 @@ def executeCmd(line, redirect=False, redirectSource=""):
         childPidCode = os.wait()
 
 
-def runShell():
+# run_shell() runs shell script.
+
+
+def run_shell():
+    x = 1
+    stored_exception = None
+
     while True:
-        line = raw_input(os.environ['PS1'])
-        if line == "q":
-            break
-        else:
+        try:
+            # do something time-consuming
+            time.sleep(1)
+            if stored_exception:
+                break
+            x += 1
+
+            line = raw_input(os.environ['PS1'])
             redirect = line.split(">")
             needsToRedirect = len(redirect) > 1
-            executeCmd(redirect[0], needsToRedirect, redirect[1].strip() if needsToRedirect else "")
+            execute_cmd(redirect[0], needsToRedirect, redirect[1].strip() if needsToRedirect else "")
+
+        except KeyboardInterrupt:
+            stored_exception = sys.exc_info()
+
+    if stored_exception:
+        print("CTRL C detected")
+        sys.exit()
 
 
-runShell()
+run_shell()
