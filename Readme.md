@@ -1,4 +1,4 @@
-##Introductory Lab
+## Introductory Lab
 
 This repository contains the code for the python introduction lab. The
 purpose of this lab is to have a fairly simple python assignment that introduces
@@ -40,20 +40,20 @@ References:
 
 * https://code.tutsplus.com/tutorials/counting-word-frequency-in-a-file-using-python--cms-25965
 
-##Shell Lab
+## Shell Lab
 
 Shell lab is located under the shell directory. `shell/`
  
 This lab is running on a Windows environment setup. Use build-in Python version 2.7.14 in Cygwin.
 
-#####__Note__: If this env is not set up on Cygwin Python v.2.7, shell will not run how its supposed to.
+##### __Note__: If this env is not set up on Cygwin Python v.2.7, shell will not run how its supposed to.
 
 Requirements met:
 - Shell terminates when it reaches EOF. Use Ctrl+D to exit shell.
 
 - Prompt takes the PS1 environment variable into account. 
 
-######Run shell on Cygwin: `$ python shell.py` or `./shell.py`
+###### Run shell on Cygwin: `$ python shell.py` or `./shell.py`
 
 Run shell and execute command for redirect to: `>`
 
